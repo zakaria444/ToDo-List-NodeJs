@@ -9,22 +9,24 @@ const server = http.createServer((req, res) => {
   res.setHeader("content-type", "text/html");
 
   let path = "./";
+  let P1  = [1,2,3,4];
+  for (let index = 0; index < P1; index++) {
+    var element = P1[index];
+    
+  }
   switch (req.url) {
+    
     case "/":
       path += "index.ejs";
       index();
-
-
       break;
-    case "/about":
+    case "/about/"+element[index]:
       path += "about.ejs";
       remove();
       // req.redirect('/index.ejs');
-
       break;
     default:
       path += "404.ejs";
-
       break;
   }
   function index(){
@@ -42,6 +44,8 @@ const server = http.createServer((req, res) => {
       let htmlFile = fs.readFileSync(path, "utf-8");
       let html = ejs.render(htmlFile, { name: rows });
       res.end(html);
+      console.log(path);
+
     });
 
 
@@ -53,6 +57,7 @@ const server = http.createServer((req, res) => {
 // server
 server.listen(port, hostname);
 console.log("start");
+
 
 const mysql = require("mysql");
 const {
