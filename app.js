@@ -9,18 +9,17 @@ const server = http.createServer((req, res) => {
   res.setHeader("content-type", "text/html");
 
   let path = "./";
-  let P1  = [1,2,3,4];
-  for (let index = 0; index < P1; index++) {
-    var element = P1[index];
+  // let P1  = [1,2,3,4];
+  // for (let index = 0; index < P1; index++) {
+  //   var element = P1.index;
     
-  }
+ 
   switch (req.url) {
-    
     case "/":
       path += "index.ejs";
       index();
       break;
-    case "/about/"+element[index]:
+    case "/about":
       path += "about.ejs";
       remove();
       // req.redirect('/index.ejs');
