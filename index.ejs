@@ -297,7 +297,7 @@ textarea:valid+label {
     <h2>
 
 
-        <% JSON.parse( name ).forEach(function(items){ %>
+        <!-- <% JSON.parse( name ).forEach(function(items){ %>
             <h4>
                 <%= items.name %>
             </h4>
@@ -310,11 +310,11 @@ textarea:valid+label {
             <h3>
                 <%= items.password_s %>
             </h3>
-            <form action="about/<%= items.id %>" method="post">
-                <button name="foo" value="<%= items.id %>">Send</button>
+            <form action="about" method="post">
+                <button name="foo" value="<%= items.id %>">Look</button>
             </form>
 
-            <% }); %>
+            <% }); %> -->
 
 
     </h2>
@@ -338,18 +338,18 @@ textarea:valid+label {
             </div> -->
           </div>
           <div class="contact-form-wrapper">
-            <form>
+            <form  action="insertion" method="post">
               <div class="form-item">
-                <input type="text" name="sender" required>
-                <label>Name:</label>
+                <input type="text"  name="todo" required>
+                <label>Todo:</label>
               </div>
               <div class="form-item">
                 <input type="text" name="email" required>
-                <label>Email:</label>
+                <label>Object:</label>
               </div>
               <div class="form-item">
                 <textarea class="" name="message" required></textarea>
-                <label>Message:</label>
+                <label>Description:</label>
               </div>
               <button class="submit-btn">Send</button>  
             </form>

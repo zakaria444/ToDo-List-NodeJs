@@ -1,6 +1,10 @@
 const fs = require("fs");
 let ejs = require("ejs");
 const http = require("http");
+const url = require("url");
+const qs = require("querystring");
+
+
 const hostname = "localhost";
 const port = 3000;
 const server = http.createServer((req, res) => {
@@ -24,6 +28,11 @@ const server = http.createServer((req, res) => {
       remove();
       // req.redirect('/index.ejs');
       break;
+      case "/insertion":
+        path += "about.ejs";
+        insertion(req,res);
+        // req.redirect('/index.ejs');
+        break;
     default:
       path += "404.ejs";
       break;
@@ -43,9 +52,34 @@ const server = http.createServer((req, res) => {
       let htmlFile = fs.readFileSync(path, "utf-8");
       let html = ejs.render(htmlFile, { name: rows });
       res.end(html);
-      console.log(path);
+      
 
     });
+
+
+  }
+  function insertion(req,res) {
+  if(  req.method === "post"){
+    let htmlFile = fs.readFileSync(path, "utf-8");
+    let html = ejs.render(htmlFile, { name: "rows" });
+   
+   
+
+res.end(html);
+    };
+   
+   
+
+
+
+  
+    //   let htmlFile = fs.readFileSync(path, "utf-8");
+    //   let html = ejs.render(htmlFile, { name:htmlFile });
+
+    //   res.end(html);
+      
+
+    // ;
 
 
   }
@@ -59,9 +93,7 @@ console.log("start");
 
 
 const mysql = require("mysql");
-const {
-  CLIENT_IGNORE_SIGPIPE,
-} = require("mysql/lib/protocol/constants/client");
+const {CLIENT_IGNORE_SIGPIPE,} = require("mysql/lib/protocol/constants/client");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
